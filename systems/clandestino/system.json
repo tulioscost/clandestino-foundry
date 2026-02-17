@@ -2,7 +2,7 @@
   "id": "clandestino",
   "title": "CLANDESTINO — Horror Espacial",
   "description": "Sistema de jogo para CLANDESTINO (pool de d6, BPM, Caminhos e Trilhas).",
-  "version": "0.1.1",
+  "version": "0.1.1.2",
   "authors": [
     {
       "name": "Túlio Costa"
@@ -26,7 +26,8 @@
     }
   ],
   "packs": [],
-  "url": "",
-  "manifest": "",
-  "download": ""
+  "url": "https://github.com/tulioscost/clandestino-foundry",
+"manifest": "https://raw.githubusercontent.com/tulioscost/clandestino-foundry/main/systems/clandestino/system.json",
+"download": "https://github.com/tulioscost/clandestino-foundry/archive/refs/heads/main.zip"
+
 }
