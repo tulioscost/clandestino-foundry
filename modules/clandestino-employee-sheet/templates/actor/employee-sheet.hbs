@@ -1,0 +1,255 @@
+<form class="clandestino sheet employee" autocomplete="off">
+  <header class="emp-header">
+    <section class="emp-idcard">
+      <div class="photo">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+        <div class="photo-label">FOTO / ID</div>
+      </div>
+
+      <div class="id-fields">
+        <div class="row">
+          <label>Nome</label>
+          <input name="name" type="text" value="{{actor.name}}" />
+        </div>
+
+        <div class="row two">
+          <div>
+            <label>Caminho</label>
+            <input name="system.identity.path" type="text" value="{{system.identity.path}}" placeholder="Ex.: Segurança / Pesquisa / Engenharia" />
+          </div>
+          <div>
+            <label>Trilha</label>
+            <input name="system.identity.track" type="text" value="{{system.identity.track}}" placeholder="Ex.: Patrulheiro / Médico / Técnico" />
+          </div>
+        </div>
+
+        <div class="row three">
+          <div>
+            <label>Nível de trilha</label>
+            <input name="system.identity.trackLevel" type="number" value="{{system.identity.trackLevel}}" min="0" step="1" />
+          </div>
+          <div>
+            <label>Crédito</label>
+            <input name="system.identity.credit" type="number" value="{{system.identity.credit}}" min="0" step="1" />
+          </div>
+          <div class="stamp">
+            <div class="stamp-box">ARQUIVO CORPORATIVO</div>
+            <div class="stamp-sub">USO INTERNO</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="emp-alert">
+      <div class="alert-title">[AVISO]</div>
+      <div class="alert-body">
+        Funcionários são recursos operacionais. Substituições podem ocorrer sem aviso prévio.
+      </div>
+    </section>
+  </header>
+
+  <main class="emp-grid">
+    <section class="panel">
+      <div class="panel-title">ESTADO FÍSICO</div>
+
+      <div class="row two">
+        <div>
+          <label>PV Máximo</label>
+          <input type="number" value="{{system.derived.pv.max}}" disabled />
+        </div>
+        <div>
+          <label>PV Atual</label>
+          <input name="system.derived.pv.value" type="number" value="{{system.derived.pv.value}}" min="0" step="1" />
+        </div>
+      </div>
+
+      <div class="row">
+        <label>Condição atual</label>
+        <div class="checks four">
+          {{#each system.physical.condition.options as |opt|}}
+            <label class="check">
+              <input type="radio" name="system.physical.condition.value" value="{{opt}}" {{checked (eq ../system.physical.condition.value opt)}} />
+              <span>{{opt}}</span>
+            </label>
+          {{/each}}
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">PERFIL PSICOSSOCIAL</div>
+
+      <div class="row">
+        <label>Estado psicológico atual</label>
+        <div class="checks four">
+          {{#each system.psy.state.options as |opt|}}
+            <label class="check">
+              <input type="radio" name="system.psy.state.value" value="{{opt}}" {{checked (eq ../system.psy.state.value opt)}} />
+              <span>{{opt}}</span>
+            </label>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="row">
+        <label>Religião ou crença declarada</label>
+        <input name="system.psy.faith" type="text" value="{{system.psy.faith}}" />
+      </div>
+
+      <div class="row">
+        <label>Segredo registrado</label>
+        <textarea name="system.psy.secret" rows="3">{{system.psy.secret}}</textarea>
+      </div>
+    </section>
+
+    <section class="panel span-2">
+      <div class="panel-title">AVALIAÇÃO DE ATRIBUTOS</div>
+
+      <div class="attr-grid">
+        <div class="attr-col">
+          <div class="attr-head">Físicos</div>
+          {{> "modules/clandestino-employee-sheet/templates/partials/attr-row.hbs" label="FOR" name="system.attributes.for.value" value=system.attributes.for.value}}
+          {{> "modules/clandestino-employee-sheet/templates/partials/attr-row.hbs" label="AGI" name="system.attributes.agi.value" value=system.attributes.agi.value}}
+          {{> "modules/clandestino-employee-sheet/templates/partials/attr-row.hbs" label="ROB" name="system.attributes.rob.value" value=system.attributes.rob.value}}
+        </div>
+
+        <div class="attr-col">
+          <div class="attr-head">Sociais</div>
+          {{> "modules/clandestino-employee-sheet/templates/partials/attr-row.hbs" label="CAR" name="system.attributes.car.value" value=system.attributes.car.value}}
+          {{> "modules/clandestino-employee-sheet/templates/partials/attr-row.hbs" label="MOR" name="system.attributes.mor.value" value=system.attributes.mor.value}}
+          {{> "modules/clandestino-employee-sheet/templates/partials/attr-row.hbs" label="FIB" name="system.attributes.fib.value" value=system.attributes.fib.value}}
+        </div>
+
+        <div class="attr-col">
+          <div class="attr-head">Mentais</div>
+          {{> "modules/clandestino-employee-sheet/templates/partials/attr-row.hbs" label="INT" name="system.attributes.int.value" value=system.attributes.int.value}}
+          {{> "modules/clandestino-employee-sheet/templates/partials/attr-row.hbs" label="RAC" name="system.attributes.rac.value" value=system.attributes.rac.value}}
+          {{> "modules/clandestino-employee-sheet/templates/partials/attr-row.hbs" label="VON" name="system.attributes.von.value" value=system.attributes.von.value}}
+        </div>
+      </div>
+
+      <div class="attr-actions">
+        <button type="button" class="roll-test" data-action="rollTest">Rolar Teste</button>
+        <div class="micro">(Atributo + Perícia + Dificuldade)</div>
+      </div>
+    </section>
+
+    <section class="panel span-2">
+      <div class="panel-title">COMPETÊNCIAS OPERACIONAIS</div>
+
+      <div class="skills-table">
+        <div class="skills-head">
+          <div>Perícia</div>
+          <div>Nível</div>
+        </div>
+
+        {{#each system.skillsList as |sk|}}
+          <div class="skills-row">
+            <div class="skill-name">{{sk.name}}</div>
+            <div class="skill-level">
+              <select name="system.skills.{{sk.id}}.value">
+                <option value="0" {{selected (eq sk.value 0)}}>0</option>
+                <option value="1" {{selected (eq sk.value 1)}}>1</option>
+                <option value="2" {{selected (eq sk.value 2)}}>2</option>
+                <option value="3" {{selected (eq sk.value 3)}}>3</option>
+                <option value="4" {{selected (eq sk.value 4)}}>4</option>
+              </select>
+              <div class="pips" aria-hidden="true">
+                <span class="{{#if (gte sk.value 1)}}on{{/if}}"></span>
+                <span class="{{#if (gte sk.value 2)}}on{{/if}}"></span>
+                <span class="{{#if (gte sk.value 3)}}on{{/if}}"></span>
+                <span class="{{#if (gte sk.value 4)}}on{{/if}}"></span>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">TALENTOS DE TRILHA</div>
+
+      <div class="row"><label>Nível 01</label><input name="system.talents.l1" type="text" value="{{system.talents.l1}}" /></div>
+      <div class="row"><label>Nível 03</label><input name="system.talents.l3" type="text" value="{{system.talents.l3}}" /></div>
+      <div class="row"><label>Nível 06</label><input name="system.talents.l6" type="text" value="{{system.talents.l6}}" /></div>
+      <div class="row"><label>Nível 09</label><input name="system.talents.l9" type="text" value="{{system.talents.l9}}" /></div>
+      <div class="row"><label>Nível 12</label><input name="system.talents.l12" type="text" value="{{system.talents.l12}}" /></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">MONITORAMENTO CARDÍACO</div>
+
+      <div class="row">
+        <label>BPM atual</label>
+        <input name="system.derived.bpm.value" type="number" value="{{system.derived.bpm.value}}" min="0" step="1" />
+        <div class="micro">Base: {{system.derived.bpm.base}}</div>
+      </div>
+
+      <div class="bpm-table">
+        <div class="bpm-row head"><div>Faixa</div><div>Estado</div></div>
+        {{#each system.bpmRanges as |r|}}
+          <div class="bpm-row {{#if r.active}}active{{/if}}">
+            <div>{{r.range}}</div>
+            <div>{{r.label}}</div>
+          </div>
+        {{/each}}
+      </div>
+
+      <div class="row">
+        <label>Traumas registrados</label>
+        <div class="row three">
+          <input name="system.traumas.0" type="text" value="{{system.traumas.[0]}}" placeholder="1." />
+          <input name="system.traumas.1" type="text" value="{{system.traumas.[1]}}" placeholder="2." />
+          <input name="system.traumas.2" type="text" value="{{system.traumas.[2]}}" placeholder="3." />
+        </div>
+      </div>
+    </section>
+
+    <section class="panel span-2">
+      <div class="panel-title">EQUIPAMENTO AUTORIZADO</div>
+
+      <div class="row three">
+        <div><label>Arma principal</label><input name="system.gear.primary" type="text" value="{{system.gear.primary}}" /></div>
+        <div><label>Arma secundária</label><input name="system.gear.secondary" type="text" value="{{system.gear.secondary}}" /></div>
+        <div><label>Proteção</label><input name="system.gear.armor" type="text" value="{{system.gear.armor}}" /></div>
+      </div>
+
+      <div class="row">
+        <label>Equipamentos adicionais</label>
+        <textarea name="system.gear.extra" rows="3" placeholder="Liste itens separados por hífen ou linha…">{{system.gear.extra}}</textarea>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">SUBSTÂNCIAS E DEPENDÊNCIAS</div>
+
+      <div class="row">
+        <label>Substância ativa</label>
+        <input name="system.substances.active" type="text" value="{{system.substances.active}}" />
+      </div>
+
+      <div class="row">
+        <label>Dependência</label>
+        <div class="checks three">
+          {{#each system.substances.dependency.options as |opt|}}
+            <label class="check">
+              <input type="radio" name="system.substances.dependency.value" value="{{opt}}" {{checked (eq ../system.substances.dependency.value opt)}} />
+              <span>{{opt}}</span>
+            </label>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="row">
+        <label>Condições médicas registradas</label>
+        <textarea name="system.substances.medical" rows="3">{{system.substances.medical}}</textarea>
+      </div>
+    </section>
+
+    <section class="panel span-2">
+      <div class="panel-title">RELATÓRIO</div>
+      <div class="micro">Inclua data e horário para verificação posterior.</div>
+      <textarea name="system.report" rows="6" placeholder="[dd/mm/aaaa hh:mm] …">{{system.report}}</textarea>
+    </section>
+  </main>
+</form>
