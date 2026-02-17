@@ -2,7 +2,7 @@
   "id": "clandestino-employee-sheet",
   "title": "CLANDESTINO — Ficha Corporativa (Funcionário)",
   "description": "Adiciona uma ficha responsiva estilo arquivo de funcionário (com foto/ID) para o sistema CLANDESTINO.",
-  "version": "0.1.0",
+  "version": "0.1.1.3",
   "authors": [
     {
       "name": "Túlio Costa"
