@@ -2,7 +2,7 @@
   "id": "clandestino-content",
   "title": "CLANDESTINO — Conteúdo (JSON)",
   "description": "Conteúdo básico (JSON) + macro utilitária para o sistema CLANDESTINO.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     {
       "name": "Túlio Costa"
