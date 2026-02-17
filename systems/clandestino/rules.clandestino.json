@@ -1,0 +1,1267 @@
+{
+  "name": "CLANDESTINO",
+  "version": "0.1.0",
+  "dice": "d6 pool",
+  "coreMechanics": {
+    "test": {
+      "pool": "attribute",
+      "d6": {
+        "1": "majorFail",
+        "2-3": "fail",
+        "4-5": "success(1)",
+        "6": "majorSuccess(3)"
+      },
+      "skill": {
+        "pointsPerSkill": 8,
+        "maxPerSkill": 4,
+        "spend": "each point may convert one failed die into a success"
+      }
+    },
+    "bpm": {
+      "base": "60 - (FIB*5)",
+      "states": [
+        {
+          "min": 60,
+          "max": 79,
+          "name": "Calmo"
+        },
+        {
+          "min": 80,
+          "max": 99,
+          "name": "Tenso"
+        },
+        {
+          "min": 100,
+          "max": 119,
+          "name": "Ansioso",
+          "penalty": "-1 die"
+        },
+        {
+          "min": 120,
+          "max": 149,
+          "name": "Pânico",
+          "penalty": "-2 physical dice"
+        },
+        {
+          "min": 150,
+          "max": 179,
+          "name": "Colapso iminente",
+          "penalty": "-2 all dice"
+        },
+        {
+          "min": 180,
+          "max": 199,
+          "name": "Colapso total",
+          "rule": "roll 1d6, apply narrative, set BPM to 130, gain 1 trauma"
+        },
+        {
+          "min": 200,
+          "name": "Parada ou surto"
+        }
+      ]
+    },
+    "hp": {
+      "pv": "ROB*3",
+      "deathTest": "ROB at 0 PV"
+    }
+  },
+  "attributes": {
+    "for": {
+      "label": "Força",
+      "skills": [
+        {
+          "id": "combate_corpo_a_corpo",
+          "name": "Combate Corpo a Corpo",
+          "desc": "brigas, facas, ferramentas, chaves inglesas",
+          "max": 4
+        },
+        {
+          "id": "arrombamento",
+          "name": "Arrombamento",
+          "desc": "abrir portas, quebrar travas, forçar estruturas",
+          "max": 4
+        },
+        {
+          "id": "atletismo",
+          "name": "Atletismo",
+          "desc": "escalar, saltar, correr sob carga",
+          "max": 4
+        },
+        {
+          "id": "manobra_de_carga",
+          "name": "Manobra de Carga",
+          "desc": "mover caixas, corpos, peças pesadas",
+          "max": 4
+        },
+        {
+          "id": "conten_o_de_risco",
+          "name": "Contenção de Risco",
+          "desc": "segurar alguém, conter alvos, agarrões",
+          "max": 4
+        }
+      ]
+    },
+    "agi": {
+      "label": "Agilidade",
+      "skills": [
+        {
+          "id": "pontaria",
+          "name": "Pontaria",
+          "desc": "armas de fogo e disparos de precisão",
+          "max": 4
+        },
+        {
+          "id": "furtividade",
+          "name": "Furtividade",
+          "desc": "mover-se sem ser visto ou ouvido",
+          "max": 4
+        },
+        {
+          "id": "reflexos",
+          "name": "Reflexos",
+          "desc": "esquivas, reações rápidas",
+          "max": 4
+        },
+        {
+          "id": "acrobacia",
+          "name": "Acrobacia",
+          "desc": "movimentos em gravidade zero ou dutos",
+          "max": 4
+        },
+        {
+          "id": "pilotagem",
+          "name": "Pilotagem",
+          "desc": "conduzir veículos, cápsulas ou naves",
+          "max": 4
+        }
+      ]
+    },
+    "rob": {
+      "label": "Robustez",
+      "skills": [
+        {
+          "id": "resist_ncia_f_sica",
+          "name": "Resistência Física",
+          "desc": "suportar dor, frio, calor, radiação",
+          "max": 4
+        },
+        {
+          "id": "f_lego",
+          "name": "Fôlego",
+          "desc": "correr longas distâncias, segurar respiração",
+          "max": 4
+        },
+        {
+          "id": "sobreviv_ncia_espacial",
+          "name": "Sobrevivência Espacial",
+          "desc": "lidar com vácuo, trajes e ambientes hostis",
+          "max": 4
+        },
+        {
+          "id": "toler_ncia_qu_mica",
+          "name": "Tolerância Química",
+          "desc": "resistir toxinas, drogas e gases",
+          "max": 4
+        },
+        {
+          "id": "recupera_o",
+          "name": "Recuperação",
+          "desc": "suportar cirurgias, ferimentos e tratamentos",
+          "max": 4
+        }
+      ]
+    },
+    "car": {
+      "label": "Carisma",
+      "skills": [
+        {
+          "id": "persuas_o",
+          "name": "Persuasão",
+          "desc": "convencer, negociar, argumentar",
+          "max": 4
+        },
+        {
+          "id": "intimida_o",
+          "name": "Intimidação",
+          "desc": "ameaçar, pressionar, impor presença",
+          "max": 4
+        },
+        {
+          "id": "atua_o",
+          "name": "Atuação",
+          "desc": "mentir, disfarçar, fingir papéis",
+          "max": 4
+        },
+        {
+          "id": "etiqueta",
+          "name": "Etiqueta",
+          "desc": "lidar com hierarquias e protocolos sociais",
+          "max": 4
+        },
+        {
+          "id": "sedu_o",
+          "name": "Sedução",
+          "desc": "manipulação emocional ou atração",
+          "max": 4
+        }
+      ]
+    },
+    "mor": {
+      "label": "Moral",
+      "skills": [
+        {
+          "id": "coragem",
+          "name": "Coragem",
+          "desc": "enfrentar medo, criaturas e situações extremas",
+          "max": 4
+        },
+        {
+          "id": "disciplina",
+          "name": "Disciplina",
+          "desc": "seguir ordens sob pressão",
+          "max": 4
+        },
+        {
+          "id": "f_ritual",
+          "name": "Fé/Ritual",
+          "desc": "práticas espirituais ou religiosas",
+          "max": 4
+        },
+        {
+          "id": "determina_o",
+          "name": "Determinação",
+          "desc": "Resistência mental ao medo e ao desespero",
+          "max": 4
+        },
+        {
+          "id": "integridade",
+          "name": "Integridade",
+          "desc": "manter princípios em situações limite",
+          "max": 4
+        }
+      ]
+    },
+    "fib": {
+      "label": "Fibra",
+      "skills": [
+        {
+          "id": "autocontrole",
+          "name": "Autocontrole",
+          "desc": "evitar surtos ou colapsos",
+          "max": 4
+        },
+        {
+          "id": "suportar_dor",
+          "name": "Suportar Dor",
+          "desc": "agir mesmo ferido",
+          "max": 4
+        },
+        {
+          "id": "persist_ncia",
+          "name": "Persistência",
+          "desc": "continuar tentando após falhas",
+          "max": 4
+        },
+        {
+          "id": "foco_sob_press_o",
+          "name": "Foco sob Pressão",
+          "desc": "agir em pânico ou urgência",
+          "max": 4
+        },
+        {
+          "id": "estabilidade_mental",
+          "name": "Estabilidade Mental",
+          "desc": "manter BPM sob controle",
+          "max": 4
+        }
+      ]
+    },
+    "int": {
+      "label": "Inteligência",
+      "skills": [
+        {
+          "id": "medicina",
+          "name": "Medicina",
+          "desc": "tratar ferimentos e doenças",
+          "max": 4
+        },
+        {
+          "id": "engenharia",
+          "name": "Engenharia",
+          "desc": "consertar máquinas e sistemas",
+          "max": 4
+        },
+        {
+          "id": "ci_ncia",
+          "name": "Ciência",
+          "desc": "biologia, química, física etc.",
+          "max": 4
+        },
+        {
+          "id": "inform_tica",
+          "name": "Informática",
+          "desc": "programar, invadir ou operar sistemas",
+          "max": 4
+        },
+        {
+          "id": "pesquisa",
+          "name": "Pesquisa",
+          "desc": "analisar arquivos e dados técnicos",
+          "max": 4
+        }
+      ]
+    },
+    "rac": {
+      "label": "Raciocínio",
+      "skills": [
+        {
+          "id": "investiga_o",
+          "name": "Investigação",
+          "desc": "juntar pistas e evidências",
+          "max": 4
+        },
+        {
+          "id": "percep_o",
+          "name": "Percepção",
+          "desc": "notar sons, movimentos, detalhes",
+          "max": 4
+        },
+        {
+          "id": "diagn_stico",
+          "name": "Diagnóstico",
+          "desc": "identificar falhas técnicas",
+          "max": 4
+        },
+        {
+          "id": "navega_o",
+          "name": "Navegação",
+          "desc": "encontrar rotas, mapas, setores",
+          "max": 4
+        },
+        {
+          "id": "estrat_gia",
+          "name": "Estratégia",
+          "desc": "planejar ações ou emboscadas",
+          "max": 4
+        }
+      ]
+    },
+    "von": {
+      "label": "Vontade",
+      "skills": [
+        {
+          "id": "concentra_o",
+          "name": "Concentração",
+          "desc": "manter foco em situações críticas",
+          "max": 4
+        },
+        {
+          "id": "resist_ncia_ps_quica",
+          "name": "Resistência Psíquica",
+          "desc": "contra entidades ou controle mental",
+          "max": 4
+        },
+        {
+          "id": "mpeto_desesperado",
+          "name": "Ímpeto Desesperado",
+          "desc": "continuar mesmo em desvantagem",
+          "max": 4
+        },
+        {
+          "id": "controle_de_impulsos",
+          "name": "Controle de Impulsos",
+          "desc": "evitar ações irracionais",
+          "max": 4
+        },
+        {
+          "id": "lucidez",
+          "name": "Lucidez",
+          "desc": "agir racionalmente sob o desespero",
+          "max": 4
+        }
+      ]
+    }
+  },
+  "paths": {
+    "Sobrevivente": {
+      "Civil": {
+        "1": [
+          {
+            "name": "Sorte Estúpida",
+            "desc": "repetir um teste falho 1 vez por sessão."
+          },
+          {
+            "name": "Instinto de Abrigo",
+            "desc": "+1 dado para se esconder ou buscar cobertura."
+          },
+          {
+            "name": "Coração Teimoso",
+            "desc": "−10 BPM no início de uma cena de perigo."
+          }
+        ],
+        "3": [
+          {
+            "name": "Reflexo de Fuga",
+            "desc": "+1 dado em testes para escapar ou correr."
+          },
+          {
+            "name": "Olhos Abertos",
+            "desc": "ignora penalidades por escuridão leve."
+          },
+          {
+            "name": "Passo Silencioso",
+            "desc": "+1 dado em Furtividade."
+          }
+        ],
+        "6": [
+          {
+            "name": "Sobrevivente Nato",
+            "desc": "ao cair a 0 PV, teste ROB para agir por 1 rodada."
+          },
+          {
+            "name": "Corpo Duro",
+            "desc": "recebe −1 dano de qualquer fonte."
+          },
+          {
+            "name": "Sempre de Pé",
+            "desc": "ignora o estado Ferido uma vez por cena."
+          }
+        ],
+        "9": [
+          {
+            "name": "Instinto Animal",
+            "desc": "age primeiro em cenas de pânico."
+          },
+          {
+            "name": "Fuga Impossível",
+            "desc": "escapa automaticamente de uma cena, 1 vez por sessão."
+          },
+          {
+            "name": "Último Suspiro",
+            "desc": "pode agir por 1 rodada após chegar a 0 PV."
+          }
+        ],
+        "12": [
+          {
+            "name": "O Último Vivo",
+            "desc": "ignora uma morte certa, 1 vez por campanha."
+          },
+          {
+            "name": "Milagre Estatístico",
+            "desc": "transforma uma falha em +1 sucesso, 1 vez por sessão."
+          },
+          {
+            "name": "Teimosia Humana",
+            "desc": "ignora um colapso, 1 vez por sessão."
+          }
+        ]
+      },
+      "Paranoico": {
+        "1": [
+          {
+            "name": "Sempre Alerta",
+            "desc": "+1 dado em Percepção."
+          },
+          {
+            "name": "Sono Leve",
+            "desc": "não pode ser surpreendido enquanto dorme."
+          },
+          {
+            "name": "Mão no Bolso",
+            "desc": "sacar item ou arma sem gastar ação."
+          }
+        ],
+        "3": [
+          {
+            "name": "Desconfiança Crônica",
+            "desc": "+1 dado para detectar mentiras."
+          },
+          {
+            "name": "Rastros Mentais",
+            "desc": "+1 dado para notar comportamentos estranhos."
+          },
+          {
+            "name": "Ouvido de Aço",
+            "desc": "+1 dado para perceber sons distantes."
+          }
+        ],
+        "6": [
+          {
+            "name": "Dormir de Olhos Abertos",
+            "desc": "nunca é totalmente desprevenido."
+          },
+          {
+            "name": "Reação Instantânea",
+            "desc": "age antes de um ataque surpresa."
+          },
+          {
+            "name": "Plano de Fuga",
+            "desc": "+1 dado em testes de escape."
+          }
+        ],
+        "9": [
+          {
+            "name": "Atirar Primeiro",
+            "desc": "primeiro ataque recebe +1 sucesso automático."
+          },
+          {
+            "name": "Instinto de Sobrevivência",
+            "desc": "+1 dado em testes defensivos."
+          },
+          {
+            "name": "Nenhum Passo em Falso",
+            "desc": "ignora penalidade de pânico 1 vez por cena."
+          }
+        ],
+        "12": [
+          {
+            "name": "Ninguém é Confiável",
+            "desc": "+2 dados contra controle mental."
+          },
+          {
+            "name": "Previsão de Desastre",
+            "desc": "evita uma surpresa por sessão."
+          },
+          {
+            "name": "Profeta do Pânico",
+            "desc": "aliados próximos reduzem −10 BPM."
+          }
+        ]
+      }
+    },
+    "Técnico": {
+      "Engenheiro": {
+        "1": [
+          {
+            "name": "Reparos Rápidos",
+            "desc": "consertos simples não exigem teste."
+          },
+          {
+            "name": "Ferramenta Improvisada",
+            "desc": "cria ferramenta funcional com sucata."
+          },
+          {
+            "name": "Diagnóstico Visual",
+            "desc": "identifica falha simples instantaneamente."
+          }
+        ],
+        "3": [
+          {
+            "name": "Improviso Mecânico",
+            "desc": "+1 dado ao criar equipamentos improvisados."
+          },
+          {
+            "name": "Sistema Temporário",
+            "desc": "reativa um sistema por 1 cena."
+          },
+          {
+            "name": "Circuito Curto",
+            "desc": "desativa portas ou painéis sem teste."
+          }
+        ],
+        "6": [
+          {
+            "name": "Sistema Redundante",
+            "desc": "ignora uma falha de sistema por cena."
+          },
+          {
+            "name": "Reparo em Combate",
+            "desc": "+1 dado para consertos sob pressão."
+          },
+          {
+            "name": "Núcleo Estável",
+            "desc": "reduz efeitos de falhas estruturais em 1 nível."
+          }
+        ],
+        "9": [
+          {
+            "name": "Domínio do Núcleo",
+            "desc": "+2 dados em testes ligados ao reator."
+          },
+          {
+            "name": "Controle de Setor",
+            "desc": "ativa ou desativa um setor inteiro."
+          },
+          {
+            "name": "Barreira Técnica",
+            "desc": "sela uma porta automaticamente."
+          }
+        ],
+        "12": [
+          {
+            "name": "Senhor da Máquina",
+            "desc": "religa sistema destruído por 1 cena."
+          },
+          {
+            "name": "Reator Fantasma",
+            "desc": "mantém energia por 1 rodada após falha."
+          },
+          {
+            "name": "Mestre do Lar",
+            "desc": "ignora uma falha estrutural do lar."
+          }
+        ]
+      },
+      "Hacker": {
+        "1": [
+          {
+            "name": "Acesso Rápido",
+            "desc": "hackeia portas comuns sem teste."
+          },
+          {
+            "name": "Interface Portátil",
+            "desc": "pode hackear sem terminal fixo."
+          },
+          {
+            "name": "Senha Fraca",
+            "desc": "+1 dado em invasões digitais."
+          }
+        ],
+        "3": [
+          {
+            "name": "Vírus de Bolso",
+            "desc": "desativa um sistema por 1 rodada."
+          },
+          {
+            "name": "Falsificação de Registro",
+            "desc": "altera dados simples."
+          },
+          {
+            "name": "Olho na Rede",
+            "desc": "+1 dado para detectar câmeras."
+          }
+        ],
+        "6": [
+          {
+            "name": "Fantasma Digital",
+            "desc": "apaga rastros automaticamente."
+          },
+          {
+            "name": "Backdoor",
+            "desc": "cria acesso permanente em sistema."
+          },
+          {
+            "name": "Queda de Sistema",
+            "desc": "trava um setor por 1 rodada."
+          }
+        ],
+        "9": [
+          {
+            "name": "Controle Remoto",
+            "desc": "+2 dados ao operar sistemas à distância."
+          },
+          {
+            "name": "IA Doméstica",
+            "desc": "assume controle de drones."
+          },
+          {
+            "name": "Blecaute Direcionado",
+            "desc": "apaga luz de um setor."
+          }
+        ],
+        "12": [
+          {
+            "name": "Mente na Rede",
+            "desc": "opera sistemas mesmo inconsciente."
+          },
+          {
+            "name": "Tomada de Controle",
+            "desc": "ganha +1 sucesso em hack crítico."
+          },
+          {
+            "name": "Fantasma Total",
+            "desc": "impossível de rastrear digitalmente."
+          }
+        ]
+      }
+    },
+    "Social": {
+      "Líder": {
+        "1": [
+          {
+            "name": "Voz de Comando",
+            "desc": "aliados próximos recebem −5 BPM."
+          },
+          {
+            "name": "Ordem Direta",
+            "desc": "aliado recebe +1 dado em ação."
+          },
+          {
+            "name": "Presença Forte",
+            "desc": "+1 dado em testes sociais."
+          }
+        ],
+        "3": [
+          {
+            "name": "Ordem Clara",
+            "desc": "aliado recebe +1 dado ao seguir ordem."
+          },
+          {
+            "name": "Coordenação Rápida",
+            "desc": "dois aliados agem juntos."
+          },
+          {
+            "name": "Discurso Curto",
+            "desc": "grupo reduz −10 BPM."
+          }
+        ],
+        "6": [
+          {
+            "name": "Moral de Ferro",
+            "desc": "ignora pânico por 1 cena."
+          },
+          {
+            "name": "Formação Defensiva",
+            "desc": "aliados recebem −1 dano."
+          },
+          {
+            "name": "Plano Rápido",
+            "desc": "aliado recebe +1 sucesso automático."
+          }
+        ],
+        "9": [
+          {
+            "name": "Última Ordem",
+            "desc": "aliados recebem +2 dados em ação final."
+          },
+          {
+            "name": "Sacrifício Calculado",
+            "desc": "pode receber dano no lugar de aliado."
+          },
+          {
+            "name": "Linha de Frente",
+            "desc": "aliados atrás de você recebem +1 dado."
+          }
+        ],
+        "12": [
+          {
+            "name": "Símbolo de Esperança",
+            "desc": "aliados não entram em colapso."
+          },
+          {
+            "name": "Último Discurso",
+            "desc": "ignora até +20 BPM em aliados."
+          },
+          {
+            "name": "Comandante Absoluto",
+            "desc": "aliado recebe +1 sucesso automático."
+          }
+        ]
+      },
+      "Crente": {
+        "1": [
+          {
+            "name": "Oração Curta",
+            "desc": "reduz −10 BPM."
+          },
+          {
+            "name": "Símbolo Sagrado",
+            "desc": "+1 dado contra medo."
+          },
+          {
+            "name": "Ritual Breve",
+            "desc": "remove penalidade mental leve."
+          }
+        ],
+        "3": [
+          {
+            "name": "Fé Inabalável",
+            "desc": "+1 dado contra horror."
+          },
+          {
+            "name": "Prece Coletiva",
+            "desc": "grupo reduz −10 BPM."
+          },
+          {
+            "name": "Olhar de Julgamento",
+            "desc": "+1 dado contra criaturas."
+          }
+        ],
+        "6": [
+          {
+            "name": "Ritual de Conforto",
+            "desc": "grupo reduz −15 BPM."
+          },
+          {
+            "name": "Coragem Divina",
+            "desc": "ignora pânico por 1 cena."
+          },
+          {
+            "name": "Proteção Espiritual",
+            "desc": "−1 dano mental recebido."
+          }
+        ],
+        "9": [
+          {
+            "name": "Milagre Pequeno",
+            "desc": "falha vira sucesso, 1 vez por sessão."
+          },
+          {
+            "name": "Exorcismo Breve",
+            "desc": "criatura perde uma ação."
+          },
+          {
+            "name": "Aura de Fé",
+            "desc": "aliados recebem +1 dado contra medo."
+          }
+        ],
+        "12": [
+          {
+            "name": "Iluminado",
+            "desc": "+2 dados contra colapso mental."
+          },
+          {
+            "name": "Milagre Verdadeiro",
+            "desc": "revive aliado, 1 vez por campanha."
+          },
+          {
+            "name": "Voz do Além",
+            "desc": "força criatura a recuar."
+          }
+        ]
+      }
+    },
+    "Militar": {
+      "Fuzileiro Espacial": {
+        "1": [
+          {
+            "name": "Postura de Combate",
+            "desc": "+1 dado no primeiro ataque."
+          },
+          {
+            "name": "Treinamento de Armas",
+            "desc": "ignora penalidade leve."
+          },
+          {
+            "name": "Movimento Tático",
+            "desc": "mover e atirar sem penalidade."
+          }
+        ],
+        "3": [
+          {
+            "name": "Reação Tática",
+            "desc": "duas ações na primeira rodada."
+          },
+          {
+            "name": "Cobertura Rápida",
+            "desc": "−1 dano sob cobertura."
+          },
+          {
+            "name": "Disparo Controlado",
+            "desc": "+1 sucesso em tiro."
+          }
+        ],
+        "6": [
+          {
+            "name": "Armadura Viva",
+            "desc": "−1 dano recebido."
+          },
+          {
+            "name": "Ataque Brutal",
+            "desc": "+1 dano corpo a corpo."
+          },
+          {
+            "name": "Resistência de Campo",
+            "desc": "ignora estado Ferido por 1 cena."
+          }
+        ],
+        "9": [
+          {
+            "name": "Disparo Letal",
+            "desc": "sucessos maiores causam +2 dano."
+          },
+          {
+            "name": "Fogo de Supressão",
+            "desc": "inimigos sofrem −1 dado."
+          },
+          {
+            "name": "Instinto de Guerra",
+            "desc": "age primeiro em combate."
+          }
+        ],
+        "12": [
+          {
+            "name": "Máquina de Guerra",
+            "desc": "ignora penalidades físicas."
+          },
+          {
+            "name": "Último Soldado",
+            "desc": "luta por 1 cena a 0 PV."
+          },
+          {
+            "name": "Tempestade de Balas",
+            "desc": "atinge dois alvos."
+          }
+        ]
+      },
+      "Oficial de Contenção": {
+        "1": [
+          {
+            "name": "Protocolo",
+            "desc": "de Isolamento +1 dado contra criaturas."
+          }
+        ],
+        "3": [
+          {
+            "name": "Área",
+            "desc": "Selada Tranca um setor sem teste."
+          }
+        ],
+        "6": [
+          {
+            "name": "Fogo",
+            "desc": "Purificador Armas de fogo causam +1 dano."
+          }
+        ],
+        "9": [
+          {
+            "name": "Extermínio",
+            "desc": "Tático Criaturas sofrem −1 dado ao atacá-lo."
+          }
+        ],
+        "12": [
+          {
+            "name": "Último",
+            "desc": "Protocolo Ativa autodestruição sem terminal."
+          }
+        ]
+      }
+    },
+    "Corporativo": {
+      "Pesquisador Chefe": {
+        "1": [
+          {
+            "name": "Olhar Científico",
+            "desc": "+1 dado para analisar Clandestinos."
+          },
+          {
+            "name": "Análise Rápida",
+            "desc": "identifica fraqueza simples sem teste."
+          },
+          {
+            "name": "Mente Metódica",
+            "desc": "ignora penalidade leve em testes mentais."
+          }
+        ],
+        "3": [
+          {
+            "name": "Amostra Segura",
+            "desc": "captura criatura pequena sem combate."
+          },
+          {
+            "name": "Estudo de Campo",
+            "desc": "+1 dado em testes envolvendo criaturas."
+          },
+          {
+            "name": "Protocolo de Pesquisa",
+            "desc": "reduz +10 BPM ao estudar o Clandestino."
+          }
+        ],
+        "6": [
+          {
+            "name": "Conhecimento Perigoso",
+            "desc": "revela uma fraqueza da criatura por sessão."
+          },
+          {
+            "name": "Fisiologia Estranha",
+            "desc": "−1 dano de criaturas."
+          },
+          {
+            "name": "Curiosidade Fria",
+            "desc": "ignora pânico por 1 cena ao analisar algo."
+          }
+        ],
+        "9": [
+          {
+            "name": "Extração Rápida",
+            "desc": "remove amostra sem penalidade."
+          },
+          {
+            "name": "Teoria de Campo",
+            "desc": "+1 sucesso em análise de criatura (1x/sessão)."
+          },
+          {
+            "name": "Observador Clínico",
+            "desc": "aliados ganham +1 dado contra criatura estudada."
+          }
+        ],
+        "12": [
+          {
+            "name": "Protocolo Secreto",
+            "desc": "chama evacuação corporativa."
+          },
+          {
+            "name": "Mente Desumana",
+            "desc": "+2 dados contra horror biológico."
+          },
+          {
+            "name": "Resultado Acima de Tudo",
+            "desc": "ignora colapso ao lidar com criaturas (1x/sessão)."
+          }
+        ]
+      },
+      "Agente Corporativo": {
+        "1": [
+          {
+            "name": "Autoridade",
+            "desc": "+1 dado em testes sociais com civis."
+          },
+          {
+            "name": "Crachá de Acesso",
+            "desc": "portas corporativas comuns sem teste."
+          },
+          {
+            "name": "Postura Oficial",
+            "desc": "reduz −5 BPM em aliados sob seu comando."
+          }
+        ],
+        "3": [
+          {
+            "name": "Acesso Restrito",
+            "desc": "abre portas corporativas médias sem teste."
+          },
+          {
+            "name": "Ordem Prioritária",
+            "desc": "aliado recebe +1 dado ao obedecer."
+          },
+          {
+            "name": "Contrato Vinculante",
+            "desc": "+1 dado em Persuasão com funcionários."
+          }
+        ],
+        "6": [
+          {
+            "name": "Protocolo de Extração",
+            "desc": "chama transporte em emergência (1x/sessão)."
+          },
+          {
+            "name": "Segurança Privada",
+            "desc": "recebe −1 dano de ataques humanos."
+          },
+          {
+            "name": "Comando Corporativo",
+            "desc": "aliados ignoram pânico por 1 rodada."
+          }
+        ],
+        "9": [
+          {
+            "name": "Recurso Secreto",
+            "desc": "revela item corporativo escondido (1x/sessão)."
+          },
+          {
+            "name": "Ordem Absoluta",
+            "desc": "aliado recebe +1 sucesso automático."
+          },
+          {
+            "name": "Contrato de Ferro",
+            "desc": "+2 dados em testes sociais corporativos."
+          }
+        ],
+        "12": [
+          {
+            "name": "Extração Garantida",
+            "desc": "nave corporativa chega ao final da sessão."
+          },
+          {
+            "name": "Intocável",
+            "desc": "ignora consequências legais corporativas."
+          },
+          {
+            "name": "Autoridade Total",
+            "desc": "aliados recebem +1 sucesso ao seguir suas ordens."
+          }
+        ]
+      }
+    },
+    "Degradação": {
+      "Viciado": {
+        "1": [
+          {
+            "name": "Estímulo Rápido",
+            "desc": "drogas duram +1 cena."
+          },
+          {
+            "name": "Tolerância Inicial",
+            "desc": "ignora primeiro efeito colateral da sessão."
+          },
+          {
+            "name": "Química no Sangue",
+            "desc": "+1 dado físico sob efeito de drogas."
+          }
+        ],
+        "3": [
+          {
+            "name": "Corpo Acostumado",
+            "desc": "−1 penalidade de abstinência."
+          },
+          {
+            "name": "Dose de Coragem",
+            "desc": "reduz −10 BPM ao usar droga."
+          },
+          {
+            "name": "Pulso Artificial",
+            "desc": "ignora pânico por 1 rodada após uso."
+          }
+        ],
+        "6": [
+          {
+            "name": "Pico Químico",
+            "desc": "+2 dados físicos sob drogas."
+          },
+          {
+            "name": "Sistema Entorpecido",
+            "desc": "−1 dano recebido sob efeito químico."
+          },
+          {
+            "name": "Foco Sintético",
+            "desc": "+1 sucesso físico (1x por sessão sob drogas)."
+          }
+        ],
+        "9": [
+          {
+            "name": "Carne Sintética",
+            "desc": "−1 dano permanente."
+          },
+          {
+            "name": "Sobrecarga Química",
+            "desc": "ignora estado Ferido sob drogas."
+          },
+          {
+            "name": "Explosão de Adrenalina",
+            "desc": "age primeiro após usar substância."
+          }
+        ],
+        "12": [
+          {
+            "name": "Monstro Funcional",
+            "desc": "imune à dor, mas +10 BPM constante."
+          },
+          {
+            "name": "Corpo Saturado",
+            "desc": "+2 dados físicos permanentes, mas dependência grave."
+          },
+          {
+            "name": "Sistema Quebrado",
+            "desc": "continua agindo a 0 PV por 1 cena (1x/campanha)."
+          }
+        ]
+      }
+    },
+    "Contaminação": {
+      "Hospedeiro": {
+        "1": [
+          {
+            "name": "Sensibilidade Estranha",
+            "desc": "+1 dado para detectar Clandestinos."
+          },
+          {
+            "name": "Carne Alterada",
+            "desc": "−1 dano de criaturas."
+          },
+          {
+            "name": "Sussurros Internos",
+            "desc": "+1 dado contra medo causado por criaturas."
+          }
+        ],
+        "3": [
+          {
+            "name": "Resistência Anômala",
+            "desc": "ignora penalidade leve causada por criaturas."
+          },
+          {
+            "name": "Sangue Impuro",
+            "desc": "criaturas hesitam ao atacá-lo (−1 dado, 1x/cena)."
+          },
+          {
+            "name": "Instinto Parasita",
+            "desc": "+1 dado para rastrear organismos."
+          }
+        ],
+        "6": [
+          {
+            "name": "Regeneração Leve",
+            "desc": "recupera 1 PV por cena."
+          },
+          {
+            "name": "Corpo Mutável",
+            "desc": "ignora estado Ferido por 1 cena."
+          },
+          {
+            "name": "Vínculo Estranho",
+            "desc": "+1 sucesso contra criaturas (1x/sessão)."
+          }
+        ],
+        "9": [
+          {
+            "name": "Mutação Útil",
+            "desc": "ganha ataque natural (dano 2)."
+          },
+          {
+            "name": "Carne Adaptativa",
+            "desc": "−1 dano permanente."
+          },
+          {
+            "name": "Mente Estranha",
+            "desc": "+2 dados contra controle mental de criaturas."
+          }
+        ]
+      }
+    }
+  },
+  "startingEquipment": {
+    "Sobrevivente": {
+      "credit_base": 20,
+      "equipment_caminho_raw": "Kit de Sobrevivência Básico\nLanterna\nFita selante\nRação sintética\nRádio simples\nEfeito:\nUma vez por sessão, ignora −1 dado por ambiente hostil.",
+      "equipment_trilhas_raw": {
+        "Civil": "Ferramenta Multiuso Pesada\nChave industrial adaptada\nEfeito:\nPode ser usada como arma (dano 2) ou ferramenta.\n+1 dado em testes de arrombamento ou reparo simples.\nCrédito total: 30 UC",
+        "Paranoico": "Sensor de Movimento Portátil\nDispositivo de pulso curto alcance\nEfeito:\nUma vez por cena, detecta presença em um setor adjacente.\nCrédito total: 30 UC"
+      }
+    },
+    "Técnico": {
+      "credit_base": 30,
+      "equipment_caminho_raw": "Tablet de Diagnóstico\nInterface universal de sistemas\nEfeito:\n+1 dado em testes de sistemas ou engenharia.",
+      "equipment_trilhas_raw": {
+        "Engenheiro": "Kit de Reparos Rápidos\nFerramentas magnéticas\nSelante industrial\nFusíveis\nEfeito:\nConsertos simples não consomem recursos.\nCrédito total: 40 UC",
+        "Hacker": "Módulo de Intrusão Digital\nDispositivo portátil de invasão\nEfeito:\n+1 sucesso automático ao hackear sistemas simples.\nCrédito total: 40 UC"
+      }
+    },
+    "Social": {
+      "credit_base": 30,
+      "equipment_caminho_raw": "Comunicador de Autoridade\nRádio corporativo com canal prioritário\nEfeito:\nUma vez por sessão, aliado recebe +1 dado após ordem.",
+      "equipment_trilhas_raw": {
+        "Líder": "Medalha de Comando\nSímbolo corporativo oficial\nEfeito:\nAliados a até 1 setor reduzem −5 BPM.\nCrédito total: 40 UC",
+        "Crente": "Kit Ritual Compacto\nSímbolo religioso\nIncenso sintético\nLivro sagrado digital\nEfeito:\n−5 BPM adicional ao realizar oração.\nCrédito total: 40 UC"
+      }
+    },
+    "Militar": {
+      "credit_base": 40,
+      "equipment_caminho_raw": "Armadura Tática Leve\nColete reforçado\nEfeito:\nReduz dano físico em 1 (uma vez por cena).",
+      "equipment_trilhas_raw": {
+        "Fuzileiro Espacial": "Rifle Corporativo Padrão\nArma automática leve\nDano: 3\nEfeito:\n+1 sucesso no primeiro disparo da cena.\nCrédito total: 60 UC",
+        "Oficial de Contenção": "Granada de Purga\nDispositivo incendiário de curto alcance\nEfeito:\nCausa dano 4 em área pequena.\nDestrói organismos frágeis.\nCrédito total: 50 UC"
+      }
+    },
+    "Corporativo": {
+      "credit_base": 50,
+      "equipment_caminho_raw": "Cartão de Acesso Executivo\nPermite entrada em áreas restritas\nEfeito:\nAbre portas corporativas sem teste (1 vez por cena).",
+      "equipment_trilhas_raw": {
+        "Pesquisador Chefe": "Maleta de Amostras\nContêiner biológico seguro\nEfeito:\nPode armazenar criatura pequena ou material perigoso sem teste.\nCrédito total: 60 UC",
+        "Agente Corporativo": "Pistola Compacta Autorizada\nDano: 2\nEfeito:\n+1 dado em testes de intimidação armada.\nCrédito total: 60 UC"
+      }
+    },
+    "Degradação": {
+      "credit_base": 20,
+      "equipment_caminho_raw": "Estojo de Estimulantes\nDrogas corporativas de emergência\nEfeito:\nUma vez por sessão: +2 dados físicos por uma cena.\nApós o efeito: +10 BPM.",
+      "equipment_trilhas_raw": {
+        "Viciado": "Injetor Automático\nSistema de aplicação rápida\nEfeito:\nUsar substâncias não consome ação.\nCrédito total: 30 UC"
+      }
+    },
+    "Contaminação": {
+      "credit_base": 10,
+      "equipment_caminho_raw": "Monitor Biométrico de Contenção\nColeira ou implante rastreador\nEfeito:\n+1 dado para resistir a efeitos biológicos.",
+      "equipment_trilhas_raw": {
+        "Hospedeiro": "Inibidor Orgânico\nDispositivo que libera substâncias estabilizadoras\nEfeito:\nUma vez por sessão, ignora dano causado por mutação.\nCrédito total: 20 UC"
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "CLANDESTINO.Attr.FOR": "FOR (Força)",
+  "CLANDESTINO.Attr.AGI": "AGI (Agilidade)",
+  "CLANDESTINO.Attr.ROB": "ROB (Robustez)",
+  "CLANDESTINO.Attr.CAR": "CAR (Carisma)",
+  "CLANDESTINO.Attr.MOR": "MOR (Moral)",
+  "CLANDESTINO.Attr.FIB": "FIB (Fibra)",
+  "CLANDESTINO.Attr.INT": "INT (Inteligência)",
+  "CLANDESTINO.Attr.RAC": "RAC (Raciocínio)",
+  "CLANDESTINO.Attr.VON": "VON (Vontade)",
+  "CLANDESTINO.Roll.Test": "Teste",
+  "CLANDESTINO.Roll.Difficulty": "Dificuldade (sucessos)"
+}

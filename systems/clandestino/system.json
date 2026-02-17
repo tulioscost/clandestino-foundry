@@ -1,0 +1,32 @@
+{
+  "id": "clandestino",
+  "title": "CLANDESTINO — Horror Espacial",
+  "description": "Sistema de jogo para CLANDESTINO (pool de d6, BPM, Caminhos e Trilhas).",
+  "version": "0.1.1",
+  "authors": [
+    {
+      "name": "Túlio Costa"
+    }
+  ],
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+  },
+  "esmodules": [
+    "module/clandestino.mjs"
+  ],
+  "styles": [
+    "styles/clandestino.css"
+  ],
+  "languages": [
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    }
+  ],
+  "packs": [],
+  "url": "",
+  "manifest": "",
+  "download": ""
+}

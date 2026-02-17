@@ -1,0 +1,315 @@
+{
+  "Actor": {
+    "types": [
+      "character",
+      "clandestino"
+    ],
+    "character": {
+      "attributes": {
+        "for": {
+          "value": 1
+        },
+        "agi": {
+          "value": 1
+        },
+        "rob": {
+          "value": 1
+        },
+        "car": {
+          "value": 1
+        },
+        "mor": {
+          "value": 1
+        },
+        "fib": {
+          "value": 1
+        },
+        "int": {
+          "value": 1
+        },
+        "rac": {
+          "value": 1
+        },
+        "von": {
+          "value": 1
+        }
+      },
+      "derived": {
+        "pv": {
+          "value": 0,
+          "max": 0
+        },
+        "bpm": {
+          "value": 60
+        },
+        "marcos": {
+          "value": 0
+        },
+        "credit": {
+          "value": 0
+        }
+      },
+      "skills": {
+        "combate_corpo_a_corpo": {
+          "value": 0
+        },
+        "arrombamento": {
+          "value": 0
+        },
+        "atletismo": {
+          "value": 0
+        },
+        "manobra_de_carga": {
+          "value": 0
+        },
+        "conten_o_de_risco": {
+          "value": 0
+        },
+        "pontaria": {
+          "value": 0
+        },
+        "furtividade": {
+          "value": 0
+        },
+        "reflexos": {
+          "value": 0
+        },
+        "acrobacia": {
+          "value": 0
+        },
+        "pilotagem": {
+          "value": 0
+        },
+        "resist_ncia_f_sica": {
+          "value": 0
+        },
+        "f_lego": {
+          "value": 0
+        },
+        "sobreviv_ncia_espacial": {
+          "value": 0
+        },
+        "toler_ncia_qu_mica": {
+          "value": 0
+        },
+        "recupera_o": {
+          "value": 0
+        },
+        "persuas_o": {
+          "value": 0
+        },
+        "intimida_o": {
+          "value": 0
+        },
+        "atua_o": {
+          "value": 0
+        },
+        "etiqueta": {
+          "value": 0
+        },
+        "sedu_o": {
+          "value": 0
+        },
+        "coragem": {
+          "value": 0
+        },
+        "disciplina": {
+          "value": 0
+        },
+        "f_ritual": {
+          "value": 0
+        },
+        "determina_o": {
+          "value": 0
+        },
+        "integridade": {
+          "value": 0
+        },
+        "autocontrole": {
+          "value": 0
+        },
+        "suportar_dor": {
+          "value": 0
+        },
+        "persist_ncia": {
+          "value": 0
+        },
+        "foco_sob_press_o": {
+          "value": 0
+        },
+        "estabilidade_mental": {
+          "value": 0
+        },
+        "medicina": {
+          "value": 0
+        },
+        "engenharia": {
+          "value": 0
+        },
+        "ci_ncia": {
+          "value": 0
+        },
+        "inform_tica": {
+          "value": 0
+        },
+        "pesquisa": {
+          "value": 0
+        },
+        "investiga_o": {
+          "value": 0
+        },
+        "percep_o": {
+          "value": 0
+        },
+        "diagn_stico": {
+          "value": 0
+        },
+        "navega_o": {
+          "value": 0
+        },
+        "estrat_gia": {
+          "value": 0
+        },
+        "concentra_o": {
+          "value": 0
+        },
+        "resist_ncia_ps_quica": {
+          "value": 0
+        },
+        "mpeto_desesperado": {
+          "value": 0
+        },
+        "controle_de_impulsos": {
+          "value": 0
+        },
+        "lucidez": {
+          "value": 0
+        }
+      },
+      "notes": "",
+      "identity": {
+        "path": "",
+        "track": "",
+        "trackLevel": 0,
+        "credit": 0
+      },
+      "physical": {
+        "condition": {
+          "value": "Saudável",
+          "options": [
+            "Saudável",
+            "Ferido",
+            "Crítico",
+            "Caído"
+          ]
+        }
+      },
+      "psy": {
+        "state": {
+          "value": "Estável",
+          "options": [
+            "Estável",
+            "Ansioso",
+            "Sob estresse",
+            "Risco de colapso"
+          ]
+        },
+        "faith": "",
+        "secret": ""
+      },
+      "talents": {
+        "l1": "",
+        "l3": "",
+        "l6": "",
+        "l9": "",
+        "l12": ""
+      },
+      "traumas": [
+        "",
+        "",
+        ""
+      ],
+      "gear": {
+        "primary": "",
+        "secondary": "",
+        "armor": "",
+        "extra": ""
+      },
+      "substances": {
+        "active": "",
+        "dependency": {
+          "value": "Nenhuma",
+          "options": [
+            "Nenhuma",
+            "Leve",
+            "Grave"
+          ]
+        },
+        "medical": ""
+      },
+      "report": ""
+    },
+    "clandestino": {
+      "attributes": {
+        "for": {
+          "value": 1
+        },
+        "agi": {
+          "value": 1
+        },
+        "rob": {
+          "value": 1
+        },
+        "fib": {
+          "value": 1
+        },
+        "rac": {
+          "value": 1
+        },
+        "von": {
+          "value": 1
+        }
+      },
+      "derived": {
+        "pv": {
+          "value": 0,
+          "max": 0
+        },
+        "bpm": {
+          "value": 0
+        }
+      },
+      "traits": {
+        "value": ""
+      },
+      "weakness": {
+        "value": ""
+      }
+    }
+  },
+  "Item": {
+    "types": [
+      "talent",
+      "equipment",
+      "substance",
+      "clandestinoType"
+    ],
+    "talent": {
+      "level": 1,
+      "text": ""
+    },
+    "equipment": {
+      "damage": 0,
+      "text": "",
+      "cost": 0
+    },
+    "substance": {
+      "effect": "",
+      "sideEffect": ""
+    },
+    "clandestinoType": {
+      "threatLevel": "",
+      "text": ""
+    }
+  }
+}
